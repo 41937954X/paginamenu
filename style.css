@@ -6,13 +6,14 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    /* Garante que o Bootstrap não interfira se for mantido */
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     background: #0e0d0d;
     color: #fff;
-    /* Ajuste: Remover background-size: cover se o background não for uma imagem */
+    /* Aplica a fonte Poppins, garantindo que seja carregada */
 }
 
 a {
@@ -34,12 +35,14 @@ a {
     position: sticky;
     top: 0;
     z-index: 1000;
+    /* CORREÇÃO: Define uma altura mínima para o header */
+    min-height: 60px;
 }
 
 .logo {
     color: #FFA500;
     font-weight: bold;
-    font-size: 1.5rem; /* Aumentei um pouco para destaque */
+    font-size: 1.5rem;
 }
 
 .menu {
@@ -51,7 +54,7 @@ a {
 .menu a {
     transition: .1s;
     color: #fff;
-    padding: 10px 0; /* Adicionado padding para área de clique */
+    padding: 10px 0;
 }
 
 .menu a.active,
@@ -67,10 +70,11 @@ a {
     color: white;
     padding: 8px 12px;
     border-radius: 6px;
-    /* Posição fixada no topo/direita */
-    position: fixed; 
-    top: 15px;
-    right: 15px;
+    /* Mudança de 'fixed' para 'absolute' para não sobrepor o botão fixo do WhatsApp */
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
     z-index: 1100;
 }
 
@@ -88,6 +92,16 @@ a {
     padding: 4rem 2rem;
     gap: 2rem;
     position: relative;
+    padding-top: 60px; /* Garante que o conteúdo não fique sob o navbar fixo */
+}
+
+/* O Hero-Left (fotos) e Hero-Right (texto) precisam de flex: 1 */
+.hero-left {
+    flex: 1;
+    min-width: 300px; /* Garante que não fique muito pequeno */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-right {
@@ -95,33 +109,86 @@ a {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* Adiciona alinhamento horizontal ao contêiner de texto */
     align-items: center; 
-    text-align: center; /* Centraliza o texto dentro do contêiner */
+    text-align: center;
 }
 
-/* Remove a margem fixa que estava quebrando o layout */
+/* Estilos para o Grid de Fotos no Hero */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
 .hero-right h1 {
-    margin-left: 0; /* CORREÇÃO: Remove margem fixa */
+    margin-left: 0;
 }
 
-/* Remove a margem fixa que estava quebrando o layout */
 .hero-right .slogan {
     font-size: 2.5rem;
     font-weight: 900;
     color: #FFA500;
-    margin-left: 0; /* CORREÇÃO: Remove margem fixa */
+    margin-left: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
 }
 
-/* O botão também precisa ser centralizado */
+/* Features dentro do Hero */
+.features {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    flex-wrap: wrap; /* Adicionado para responsividade */
+}
+
+.feature {
+    text-align: center;
+    max-width: 150px;
+    color: #fff;
+}
+
+.feature h3 {
+    color: #ff8c00;
+    font-size: 1.2rem;
+}
+
+.feature p {
+    font-size: 0.9rem;
+    color: #ccc;
+}
+
+/* Botão */
 .btn-grad {
-    /* ... (outras propriedades) ... */
+    /* Propriedades de cor e efeito gradiente (assumindo que existam no seu projeto) */
+    background: linear-gradient(90deg, #ff8c00, #ff4500);
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1rem;
     margin-top: 30px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: 0.3s;
     max-width: 300px;
-    /* Centraliza o botão dentro do flex container do .hero-right */
-    align-self: center; 
+    align-self: center;
+}
+
+.btn-grad:hover {
+    background: linear-gradient(90deg, #ff4500, #ff8c00);
+    box-shadow: 0 0 10px #ff8c00;
 }
 
 
@@ -148,8 +215,7 @@ a {
 /* Cards Container (Desktop: Multi-colunas) */
 .cards-container {
     display: grid;
-    /* Grid: 4 colunas fluidas, mas com mínimo de 250px */
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     justify-content: center;
     gap: 1.5rem;
     margin-top: 1rem;
@@ -218,20 +284,25 @@ a {
     padding: 4px 10px;
     border-radius: 5px;
     margin-top: 0.3rem;
+    align-self: flex-start; /* Fix para garantir que fique no canto */
 }
 
 
 /* =================================================================== */
-/* 5. RODAPÉ (FOOTER) */
+/* 5. RODAPÉ (FOOTER) - Assumindo que você usará a tag <footer> */
 /* =================================================================== */
 
-.footer-container {
+footer {
     background: #1e1e1e;
+    padding-top: 3rem;
+}
+
+.footer-container {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
     text-align: center;
-    padding: 3rem;
+    padding: 0 3rem 1.5rem;
 }
 
 .footer-info {
@@ -255,6 +326,8 @@ a {
     margin-top: 0.5rem;
     width: 150px;
     height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
 }
 
 .footer-item i {
@@ -280,11 +353,11 @@ a {
 }
 
 .footer-bottom {
-    background-color: #1e1e1e;
+    background-color: #111; /* Cor mais escura que o container */
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
     color: #888;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
@@ -304,7 +377,7 @@ a {
     align-items: center;
     text-decoration: none;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    z-index: 100;
+    z-index: 10000; /* Z-index alto para garantir que fique por cima de tudo */
     transition: transform 0.3s ease;
 }
 
@@ -323,6 +396,9 @@ a {
     /* Navbar Toggle */
     .menu-toggle {
         display: block; /* Mostra o botão hambúrguer */
+        position: fixed; /* MUDANÇA: Volta para fixed para o menu ficar sempre visível */
+        top: 15px;
+        right: 15px;
     }
 
     .menu {
@@ -330,133 +406,30 @@ a {
         flex-direction: column;
         background: #060606;
         position: fixed;
-        top: 60px; /* Abaixo do header */
+        top: 60px; 
         right: 0;
         width: 220px;
         padding: 15px;
         border-radius: 0 0 0 10px;
-        transition: max-height 0.3s ease-out; /* Transição de altura para o JS */
+        transition: max-height 0.3s ease-out;
         max-height: 0;
         overflow: hidden;
+        z-index: 999; /* Garante que o menu fique abaixo do botão toggle */
     }
 
     .menu.active {
-        display: flex; /* O JS adiciona esta classe */
-        max-height: 500px; /* Suficiente para mostrar todos os links */
+        display: flex;
+        max-height: 500px;
     }
 
     /* Hero Section */
     .hero {
-        flex-direction: column; /* Empilha as seções */
+        flex-direction: column;
         text-align: center;
-        min-height: auto; /* Permite que o hero seja mais compacto */
-        padding-top: 80px; /* Adiciona espaço para o menu toggle fixo */
+        min-height: auto;
+        padding-top: 100px; /* Mais espaço para o menu toggle fixo */
+        padding-bottom: 2rem;
     }
 
-    /* Centraliza o texto e remove margens fixas */
     .hero-right, 
-    .hero-right h1,
-    .hero-right .slogan {
-        text-align: center;
-        margin-left: 0; 
-    }
-    
-    .hero-right .logo {
-        font-size: 2.5rem;
-    }
-    
-    .hero-right .slogan {
-        font-size: 1.8rem;
-    }
-
-    /* Grid de Fotos */
-    .photo-grid {
-        width: 100%;
-        max-width: 400px; /* Limita a largura em telas maiores que 600px */
-        margin: 0 auto;
-    }
-
-    .photo-grid img {
-        height: 150px;
-    }
-    
-    /* Features */
-    .features {
-        flex-direction: column; /* Empilha as features */
-        gap: 1rem;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .feature {
-        width: 100%;
-        max-width: 300px; /* Limita a largura das features */
-    }
-}
-
-/* Ajustes para Cards e Footer em Mobile Pequeno (aplicado até 600px) */
-@media (max-width: 600px) {
-
-    /* Cards Container: Força coluna única com layout compacto */
-    .cards-container {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 0 10px;
-    }
-    
-    .card {
-        flex-direction: row; /* Imagem e info lado a lado */
-        align-items: flex-start;
-        padding: 10px;
-    }
-    
-    .card .image {
-        width: 80px;
-        height: 80px;
-        flex-shrink: 0;
-        margin-right: 10px;
-    }
-
-    .card .image img {
-        height: 100%;
-        width: 100%;
-    }
-
-    .card .info {
-        flex-grow: 1;
-    }
-    
-    /* Redução de Fontes dos Cards */
-    .card .info h3 {
-        font-size: 0.95rem; 
-    }
-    
-    .card .price {
-        font-size: 0.95rem;
-    }
-    
-    .card .info p, .card .info .extra {
-        font-size: 0.75rem; 
-    }
-    
-    /* Rodapé (Footer) */
-    .footer-container {
-        padding: 2rem 1rem;
-    }
-    
-    .footer-info {
-        flex-direction: column; /* Empilha os itens do footer */
-        gap: 2rem;
-    }
-    
-    .footer-item {
-        min-width: 90%;
-        max-width: none;
-    }
-
-    .footer-bottom {
-        padding: 1rem;
-        font-size: 0.75rem;
-    }
-}
-
+    .hero-right h1
