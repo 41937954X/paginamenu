@@ -1,252 +1,229 @@
 /* Reset */
-* { 
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+* { margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-
-body { 
-    font-family: 'Poppins', sans-serif;
-    background:#0e0d0d;
-    color:#fff;
-    background-size: cover;
+body { font-family: 'Poppins', sans-serif;
+  background:#0e0d0d;
+  color:#fff;
+   background-size: cover;
 }
 
 /* Navbar */
 .navbar {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#000;
-    padding:1rem 2rem;
-    position:sticky;
-    top:0;
-    z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:#000;
+  padding:1rem 2rem;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
 .logo { 
-    color:#FFA500;
-    font-weight:bold;
-    font-size:1.2rem;
+  
+  color:#FFA500;
+  font-weight:bold;
+  font-size:1.2rem;
 }
 
-.menu { 
-    list-style:none;
-    display:flex;
-    gap:1.5rem;
+.menu { list-style:none;
+  display:flex;
+  gap:1.5rem;
 }
 
-.menu a { 
-    text-decoration:none;
-    color:#fff;
-    transition:.1s;
+.menu a { text-decoration:none;
+  color:#fff;
+  transition:.1s;
 }
 
 .menu a.active, .menu a:hover { 
-    color:#FFA500;
+  color:#FFA500;
 }
 
 .menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-    background: #080808;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 6px;
-    position:fixed;
-    top: 15px;
-    right: 15px;
-    z-index: 1100;
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+  background: #080808;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  position:fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 1100;
 }
 
-/* ------------------------------------------------ */
-/* HERÓI (SECTION) */
-/* ------------------------------------------------ */
-.hero {
+/* Responsividade */
+@media (max-width: 768px) {
+  .menu {
+    display: none;
+    flex-direction: column;
+    background: #060606;
+    position: fixed;
+    top: 60px;
+    right: 0;
+    width: 220px;
+    padding: 15px;
+    border-radius: 0 0 0 10px;
+  }
+
+  .menu.active {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 100vh;
-    background: #000;
-    color: #FFA500;
-    padding: 2rem;
-    gap: 2rem;
-    position: relative;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100vh;
+  background: #000;
+  color: #FFA500;
+  padding: 2rem;
+  gap: 2rem;
+  position: relative;
 }
 
 .hero-left {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .photo-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
 }
 
 .photo-grid img {
-    width: 100%;
-    height: 300px; 
-    object-fit: cover;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
+  width: 100%;
+  height: 300px; /* aumentei o tamanho */
+  object-fit: cover;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .photo-grid img:hover {
-    transform: scale(1.08);
-    box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+  transform: scale(1.08);
+  box-shadow: 0 6px 20px rgba(255,215,0,0.4);
 }
 
-/* ------------------------------------------------ */
-/* CORREÇÃO CENTRALIZAÇÃO HERO-RIGHT */
-/* ------------------------------------------------ */
 .hero-right {
-    flex: 1;
-    text-align: center; /* Centraliza o texto dentro dos elementos */
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centraliza o bloco de conteúdo (título, slogan, features) */
-    justify-content: center; /* Centraliza o bloco verticalmente */
+  flex: 1;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-/* As regras que causavam desalinhamento foram removidas (.hero-right h1 e .slogan com margin-left) */
 .hero-right .logo {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #fff;
-    margin-bottom: 5px; /* Adicionado um pequeno espaçamento */
+  font-size: 3rem;
+  font-weight: 700;
+  color: #fff;
 }
 
-/* REMOVIDO: .hero-right h1 { margin-left: 180px; } */
+.hero-right h1{
+
+  margin-left: 180px;
+}
 
 
 .hero-right .slogan {
-    font-size: 2.5rem;
-    font-weight: 900;
-    color: #FFA500;
-    /* REMOVIDO: margin-left: 150px; */
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 30px; /* Adiciona espaçamento após o slogan */
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #FFA500;
+  margin-left: 150px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
 
 .btn-grad {
-    padding: 14px 40px;
-    border: none;
-    border-radius: 30px;
-    color: #fff;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #7a7450, #000000);
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
-    transition: all 0.3s ease-in-out;
-    /* Centraliza o botão se ele estiver em um contêiner flex */
-    margin-top: 20px; 
+  padding: 14px 40px;
+  border: none;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+
+  /* gradiente amarelo e preto */
+  background: linear-gradient(135deg, #7a7450, #000000);
+  
+  /* sombra para dar destaque */
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+  
+  transition: all 0.3s ease-in-out;
 }
 
 /* efeito hover */
 .btn-grad:hover {
-    background: linear-gradient(135deg, #000000, #FFA500);
-    transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(238, 176, 5, 0.993);
+  background: linear-gradient(135deg, #000000, #FFA500);
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(238, 176, 5, 0.993);
 }
+
 
 
 /* Features dentro do hero */
 .features {
-    display: flex;
-    gap: 1.5rem;
-    /* Removido 'margin-top: auto' para melhor controle no mobile */
-    flex-wrap: wrap;
-    justify-content: center; /* Centraliza as features horizontalmente no desktop */
-    width: 100%; /* Garante que ocupe a largura total para centralização */
+  display: flex;
+  gap: 1.5rem;
+  margin-top: auto; /* empurra para baixo */
+  flex-wrap: wrap;
 }
 
 .feature {
-    background: #111;
-    padding: 1rem;
-    border-radius: 10px;
-    flex: 1;
-    min-width: 160px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+  background: #111;
+  padding: 1rem;
+  border-radius: 10px;
+  flex: 1;
+  min-width: 160px;
+  text-align: center;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.5);
 }
 
 .feature h3 {
-    color: #FFA500;
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+  color: #FFA500;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .feature p {
-    color: #fff;
-    font-size: 0.9rem;
+  color: #fff;
+  font-size: 0.9rem;
 }
 
-/* ------------------------------------------------ */
-/* RESPONSIVIDADE */
-/* ------------------------------------------------ */
+/* Responsivo */
 @media (max-width: 768px) {
-    
-    /* Navbar Responsividade */
-    .menu {
-        display: none;
-        flex-direction: column;
-        background: #060606;
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 220px;
-        padding: 15px;
-        border-radius: 0 0 0 10px;
-    }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    height: auto;
+  }
 
-    .menu.active {
-        display: flex;
-    }
+  .photo-grid img {
+    height: 160px; /* menor no mobile */
+  }
 
-    .menu-toggle {
-        display: block;
-    }
-    
-    /* Hero Section Mobile */
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        height: auto; /* Não forçar 100vh no mobile */
-        padding-top: 60px; /* Adiciona padding para evitar que o conteúdo fique atrás do menu */
-    }
-
-    .photo-grid img {
-        height: 160px; /* menor no mobile */
-    }
-    
-    /* Centraliza o bloco de features e cada feature */
-    .features {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center; /* Centraliza o bloco de features dentro do hero-right */
-        max-width: 300px;
-        margin: 20px auto; /* Centraliza o bloco se ele tiver max-width */
-    }
-    
-    .feature {
-        width: 100%; /* Garante que ocupe toda a largura disponível no contêiner de features */
-        min-width: unset; 
-    }
-    
-    .hero-right {
-        /* Garante que o hero-right se comporte bem no mobile */
-        padding: 1rem;
-    }
+  .features {
+    flex-direction: column;
+    gap: 1rem;
+  }
 }
+
+
 
 
 /* Features (entrega rápida, etc.) */
