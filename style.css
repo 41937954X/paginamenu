@@ -120,11 +120,19 @@ body { font-family: 'Poppins', sans-serif;
 }
 
 .hero-right {
-  flex: 1;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    flex: 1;
+    /* Centraliza o bloco de conteúdo dentro da div hero-right: */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* <<< ESSENCIAL: Centraliza o h1, p.slogan, e .features horizontalmente */
+    justify-content: center; 
+    
+    /* Centraliza o texto dentro de h1 e p: */
+    text-align: center; 
+}
+.hero-right h1 {
+    /* REMOVER QUALQUER margin-left FIXO AQUI */
+    margin-left: 0; 
 }
 
 .hero-right .logo {
@@ -133,14 +141,49 @@ body { font-family: 'Poppins', sans-serif;
   color: #fff;
 }
 
+
+
 .hero-right .slogan {
   font-size: 2.5rem;
   font-weight: 900;
   color: #FFA500;
   text-transform: uppercase;
   letter-spacing: 2px;
+  margin-left: 0;
 }
 
+
+.features {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center; /* Centraliza as caixas de feature dentro de .features */
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    
+    .hero-right {
+        /* Garante que, mesmo no mobile, o conteúdo continue centralizado no contêiner */
+        align-items: center;
+        text-align: center;
+        width: 100%; 
+    }
+
+    /* Centraliza o bloco de features (com o botão dentro, conforme seu HTML) */
+    .features {
+        flex-direction: column;
+        align-items: center; /* Centraliza o bloco vertical de features + botão */
+        gap: 1rem;
+        max-width: 300px; /* Limita a largura para que o margin: auto funcione */
+        margin: 20px auto; /* <<< Força a centralização do bloco .features horizontalmente */
+    }
+    
+    .feature {
+        width: 100%; /* Faz a feature individual ocupar a largura máxima de 300px */
+        min-width: unset; 
+    }
+}
 .btn-grad {
   padding: 14px 40px;
   border: none;
@@ -516,4 +559,3 @@ footer hr {
   transform: scale(1.1);
   background: #20b954;
 }
-
