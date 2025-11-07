@@ -133,17 +133,10 @@ body { font-family: 'Poppins', sans-serif;
   color: #fff;
 }
 
-.hero-right h1{
-
-  margin-left: 180px;
-}
-
-
 .hero-right .slogan {
   font-size: 2.5rem;
   font-weight: 900;
   color: #FFA500;
-  margin-left: 150px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -523,3 +516,4 @@ footer hr {
   transform: scale(1.1);
   background: #20b954;
 }
+
