@@ -1,76 +1,91 @@
-/* Reset */
-* { 
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+/* =================================================================== */
+/* 1. RESET E ESTILOS BASE */
+/* =================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-body { 
+body {
     font-family: 'Poppins', sans-serif;
-    background:#0e0d0d;
-    color:#fff;
-    background-size: cover;
+    background: #0e0d0d;
+    color: #fff;
+    /* Ajuste: Remover background-size: cover se o background não for uma imagem */
 }
 
-/* Navbar */
+a {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+/* =================================================================== */
+/* 2. NAVBAR E NAVEGAÇÃO */
+/* =================================================================== */
+
 .navbar {
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    background:#000;
-    padding:1rem 2rem;
-    position:sticky;
-    top:0;
-    z-index:1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #000;
+    padding: 1rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
 }
 
-.logo { 
-    color:#FFA500;
-    font-weight:bold;
-    font-size:1.2rem;
+.logo {
+    color: #FFA500;
+    font-weight: bold;
+    font-size: 1.5rem; /* Aumentei um pouco para destaque */
 }
 
-.menu { 
-    list-style:none;
-    display:flex;
-    gap:1.5rem;
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
 }
 
-.menu a { 
-    text-decoration:none;
-    color:#fff;
-    transition:.1s;
+.menu a {
+    transition: .1s;
+    color: #fff;
+    padding: 10px 0; /* Adicionado padding para área de clique */
 }
 
-.menu a.active, .menu a:hover { 
-    color:#FFA500;
+.menu a.active,
+.menu a:hover {
+    color: #FFA500;
 }
 
 .menu-toggle {
-    display: none;
+    display: none; /* Escondido por padrão (Desktop) */
     font-size: 28px;
     cursor: pointer;
     background: #080808;
     color: white;
     padding: 8px 12px;
     border-radius: 6px;
-    position:fixed;
+    /* Posição fixada no topo/direita */
+    position: fixed; 
     top: 15px;
     right: 15px;
     z-index: 1100;
 }
 
-/* ------------------------------------------------ */
-/* HERÓI (SECTION) */
-/* ------------------------------------------------ */
+/* =================================================================== */
+/* 3. HERO SECTION (INÍCIO) */
+/* =================================================================== */
+
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 100vh;
+    min-height: 100vh; /* Uso min-height para que não quebre */
     background: #000;
     color: #FFA500;
-    padding: 2rem;
+    padding: 4rem 2rem; /* Aumentado o padding superior para telas grandes */
     gap: 2rem;
     position: relative;
 }
@@ -86,55 +101,57 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 15px;
+    max-width: 500px; /* Limita o tamanho máximo do grid no desktop */
 }
 
 .photo-grid img {
     width: 100%;
-    height: 300px; 
+    height: 300px;
     object-fit: cover;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .photo-grid img:hover {
     transform: scale(1.08);
-    box-shadow: 0 6px 20px rgba(255,215,0,0.4);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
 }
 
-/* ------------------------------------------------ */
-/* CORREÇÃO CENTRALIZAÇÃO HERO-RIGHT */
-/* ------------------------------------------------ */
 .hero-right {
     flex: 1;
-    text-align: center; /* Centraliza o texto dentro dos elementos */
+    text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centraliza o bloco de conteúdo (título, slogan, features) */
-    justify-content: center; /* Centraliza o bloco verticalmente */
+    justify-content: center;
 }
 
-/* As regras que causavam desalinhamento foram removidas (.hero-right h1 e .slogan com margin-left) */
 .hero-right .logo {
     font-size: 3rem;
     font-weight: 700;
     color: #fff;
-    margin-bottom: 5px; /* Adicionado um pequeno espaçamento */
+    /* Ajuste para desktop: remove margem para ficar alinhado */
+    margin-left: 0;
 }
 
-/* REMOVIDO: .hero-right h1 { margin-left: 180px; } */
+.hero-right h1 {
+    /* Ajuste para desktop: remove margem para ficar alinhado */
+    margin-left: 0;
+    color: #fff;
+}
 
 
 .hero-right .slogan {
     font-size: 2.5rem;
     font-weight: 900;
     color: #FFA500;
-    /* REMOVIDO: margin-left: 150px; */
+    /* Ajuste para desktop: remove margem para ficar alinhado */
+    margin-left: 0;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin-bottom: 30px; /* Adiciona espaçamento após o slogan */
 }
 
+/* Botão Cardápio */
 .btn-grad {
     padding: 14px 40px;
     border: none;
@@ -147,42 +164,39 @@ body {
     background: linear-gradient(135deg, #7a7450, #000000);
     box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
     transition: all 0.3s ease-in-out;
-    /* Centraliza o botão se ele estiver em um contêiner flex */
-    margin-top: 20px; 
+    margin-top: 30px; /* Espaço acima do botão */
+    max-width: 300px; /* Limita o tamanho do botão */
+    text-align: center; /* Centraliza o texto no botão */
 }
 
-/* efeito hover */
 .btn-grad:hover {
     background: linear-gradient(135deg, #000000, #FFA500);
     transform: scale(1.05);
     box-shadow: 0 6px 20px rgba(238, 176, 5, 0.993);
 }
 
-
-/* Features dentro do hero */
+/* Features (entrega rápida, etc.) */
 .features {
+    margin-top: 2rem;
     display: flex;
-    gap: 1.5rem;
-    /* Removido 'margin-top: auto' para melhor controle no mobile */
+    gap: 20px;
+    justify-content: flex-start; /* Alinhado à esquerda no desktop */
     flex-wrap: wrap;
-    justify-content: center; /* Centraliza as features horizontalmente no desktop */
-    width: 100%; /* Garante que ocupe a largura total para centralização */
 }
 
 .feature {
-    background: #111;
-    padding: 1rem;
-    border-radius: 10px;
-    flex: 1;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px;
+    border-radius: 12px;
+    flex: 1; /* Permite que ocupe o espaço */
     min-width: 160px;
-    text-align: center;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .feature h3 {
-    color: #FFA500;
+    color: #ff9900;
     font-size: 1rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
 }
 
 .feature p {
@@ -190,359 +204,338 @@ body {
     font-size: 0.9rem;
 }
 
-/* ------------------------------------------------ */
-/* RESPONSIVIDADE */
-/* ------------------------------------------------ */
-@media (max-width: 768px) {
-    
-    /* Navbar Responsividade */
-    .menu {
-        display: none;
-        flex-direction: column;
-        background: #060606;
-        position: fixed;
-        top: 60px;
-        right: 0;
-        width: 220px;
-        padding: 15px;
-        border-radius: 0 0 0 10px;
-    }
 
-    .menu.active {
-        display: flex;
-    }
+/* =================================================================== */
+/* 4. CATEGORIAS E CARDS DE PRODUTOS */
+/* =================================================================== */
 
-    .menu-toggle {
-        display: block;
-    }
-    
-    /* Hero Section Mobile */
-    .hero {
-        flex-direction: column;
-        text-align: center;
-        height: auto; /* Não forçar 100vh no mobile */
-        padding-top: 60px; /* Adiciona padding para evitar que o conteúdo fique atrás do menu */
-    }
-
-    .photo-grid img {
-        height: 160px; /* menor no mobile */
-    }
-    
-    /* Centraliza o bloco de features e cada feature */
-    .features {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: center; /* Centraliza o bloco de features dentro do hero-right */
-        max-width: 300px;
-        margin: 20px auto; /* Centraliza o bloco se ele tiver max-width */
-    }
-    
-    .feature {
-        width: 100%; /* Garante que ocupe toda a largura disponível no contêiner de features */
-        min-width: unset; 
-    }
-    
-    .hero-right {
-        /* Garante que o hero-right se comporte bem no mobile */
-        padding: 1rem;
-    }
+.category {
+    padding: 3rem 2rem;
+    text-align: center;
 }
 
-
-/* Features (entrega rápida, etc.) */
-.features {
-  margin-top: 2rem;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
+.category h2 {
+    color: #ff8c00;
+    font-size: 2rem;
+    margin-bottom: .5rem;
 }
 
-.feature {
-  background: rgba(0, 0, 0, 0.6);
-  padding:15px  20px;
-  border-radius: 12px;
-  min-width: 200px;
+.category-subtitle {
+    color: #bbb;
+    margin-bottom: 2rem;
 }
 
-.feature h3 {
-  color: #ff9900;
-  font-size: 1rem;
-  margin-bottom: 5px;
-}
-
-/* Benefits */
-.benefits { display:flex; justify-content:center; gap:20px; margin-top:30px; flex-wrap:wrap; }
-.benefit {
-  background:rgba(0,0,0,0.6); padding:15px; border-radius:10px; width:200px; text-align:center;
-}
-.benefit h3 { color:#FFA500; margin-bottom:10px; }
-
-/* Categorias */
-.category { padding:3rem 2rem; text-align:center; }
-.category h2 { color:#ff8c00; font-size:2rem; margin-bottom:.5rem; }
-.category-subtitle { color:#bbb; margin-bottom:2rem; }
-
-/* Cards Container */
+/* Cards Container (Desktop: Multi-colunas) */
 .cards-container {
-  display:flex; flex-wrap: wrap; justify-content: center;
-  gap:1.5rem; margin-top:1rem; 
+    display: grid;
+    /* Grid: 4 colunas fluidas, mas com mínimo de 250px */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
 }
 
-/* Card */
+/* Card (Estilo Base) */
 .card {
-  flex: 0 1 250px;
- background: linear-gradient(135deg, #FFA500, #4c4b4b, #000000);
-
-
-
-  border-radius:10px;
-  overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  justify-content:flex-start;
-  padding:1rem;
-  text-align:left;
-  color:#fff;
-  gap:0.5rem;
-}
-
-/* Imagem do produto */
-.image {
-  background:#070707;
-  color:#888;
-  height:120px;
-  width: 120px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:px;
-  font-size:0.9rem;
-}
-
-/* Informações */
-.info h3 {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-top:0.5rem;
-  font-size:1.1rem;
-  font-weight:bold;
-}
-.price { color:#f9c74f; font-weight:bold; }
-.info p {
-  color:#ccc;
-  font-size:0.9rem;
-  margin-top:0.3rem;
-  line-height:1.3;
-}
-
-/* Texto "Serve X pessoas" */
-.serve {
-  color:#ff4d4d;
-  font-size:0.85rem;
-  font-weight:500;
-  margin-top:0.5rem;
-}
-
-/* Badge de destaque */
-.badge {
-  display:inline-block;
-  background:#e63946;
-  color:#fff;
-  font-size:0.8rem;
-  padding:4px 10px;
-  border-radius:5px;
-  margin-top:0.3rem;
+    background: linear-gradient(135deg, #FFA500, #4c4b4b, #000000);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    text-align: left;
+    color: #fff;
+    gap: 0.5rem;
 }
 
 .card .image {
-  width: 100%;
-  height: 150px; /* mesma altura do quadrado "Sem foto" */
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card .image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* faz a imagem preencher sem distorcer */
-  border-radius: 5px; /* opcional, arredonda as bordas */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
 }
-
 
 .card .info h3 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 1rem;
-  font-weight: bold;
-  margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
 }
 
-
-.card .price {
-  color: #ffb347; /* tom alaranjado do preço */
-  font-weight: bold;
+.price {
+    color: #ffb347;
+    font-weight: bold;
 }
 
 .card .info p {
-  font-size: 0.9rem;
-  color: #ccc;
-  margin: 0.2rem 0;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin: 0.2rem 0;
+    line-height: 1.3;
 }
 
-.card .info .extra {
-  font-size: 0.8rem;
-  color: #aaa; /* texto adicional em cinza mais claro */
+.card .info .extra, .serve {
+    font-size: 0.8rem;
+    color: #aaa;
 }
 
-/* Rodapé */
-.footer {
-  background: #1e1e1e;
-  color: #fff;
-  padding: 2rem 1rem;
-  text-align: center;
+.badge {
+    display: inline-block;
+    background: #e63946;
+    color: #fff;
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    border-radius: 5px;
+    margin-top: 0.3rem;
 }
+
+
+/* =================================================================== */
+/* 5. RODAPÉ (FOOTER) */
+/* =================================================================== */
 
 .footer-container {
-  font-family: Arial, Helvetica, sans-serif;
-  background: #1e1e1e;
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  text-align: center;
-  padding: 3rem 3rem 3rem 3rem;
-}
-
-.footer-bottom {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: #1e1e1e; /* cinza ainda mais escuro para a faixa inferior */
-  text-align: center;
-  padding: 2rem 2rem 2rem 2rem;
-  color: #888; /* texto em cinza claro */
-  font-size: 1rem;
-  font-weight:bold
+    background: #1e1e1e;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 3rem;
 }
 
 .footer-info {
-  display: flex;
-  justify-content: center;
-  gap: 4rem;
-  flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    width: 100%;
 }
 
 .footer-item {
-  flex: 1;
-  min-width: 200px;
-  margin: 10px;
-  text-align: center;
-  max-width: 180px;
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+    text-align: center;
+    max-width: 220px;
 }
 
 .footer-item img {
-  margin-top: 0.5rem;
-  width: 150px;
-  height: 150px;
+    margin-top: 0.5rem;
+    width: 150px;
+    height: 150px;
 }
 
 .footer-item i {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-  color: #e63946; /* vermelho para destaque */
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #e63946;
 }
 
 .footer-item:nth-child(2) i {
-  color: #f9c74f; /* amarelo no ícone de horário */
-}
-
-.footer-item .icon {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+    color: #f9c74f;
 }
 
 .footer-item h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: bold;   /* títulos sempre em negrito */
-  margin: 0.5rem 0;
-  font-size: 1.5rem;
-  margin-bottom: 0.3rem;
+    font-weight: bold;
+    margin: 0.5rem 0;
+    font-size: 1.5rem;
+    margin-bottom: 0.3rem;
 }
 
 .footer-item p {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fff;
-  font-size: 1rem;
+    color: #fff;
+    font-size: 1rem;
 }
 
-.footer-item p.bold {
-  font-weight: bold;   /* texto em negrito */
-}
-
-.footer-item p.normal {
-  font-weight: normal; /* texto sem negrito */
-  color: #888;         /* opcional: deixar levemente mais claro */
-}
-
-footer hr {
-  border: 0;
-  border-top: 1px solid #444;
-  margin: 0;
-  width: 100%;
-}
-
-.footer-item a {
-  color: #ff3b3b;
-  text-decoration: none;
-}
-
-.footer-item a:hover {
-  text-decoration: underline;
-}
-
-.footer-copy {
-  border-top: 1px solid #333;
-  padding-top: 1rem;
-  font-size: 0.85rem;
-  color: #aaa;
-}
-
-/* Cores dos ícones */
-.icon.red {
-  color: #ff3b3b;
-}
-
-.icon.orange {
-  color: #ff9800;
+.footer-bottom {
+    background-color: #1e1e1e;
+    text-align: center;
+    padding: 2rem;
+    color: #888;
+    font-size: 1rem;
+    font-weight: bold;
 }
 
 /* Botão WhatsApp flutuante */
 .whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #25d366;
-  color: #fff;
-  font-size: 2rem;
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  padding: 15px;
-  font-size: 24px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  z-index: 100;
-  transition: transform 0.3s ease;
-  
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #25d366;
+    color: #fff;
+    font-size: 24px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+    transition: transform 0.3s ease;
 }
 
 .whatsapp-float:hover {
-  transform: scale(1.1);
-  background: #20b954;
+    transform: scale(1.1);
+    background: #20b954;
+}
+
+/* =================================================================== */
+/* 6. MEDIA QUERIES (RESPONSIVIDADE MOBILE) */
+/* =================================================================== */
+
+/* Layout geral e de navegação (aplicado até 768px) */
+@media (max-width: 768px) {
+    
+    /* Navbar Toggle */
+    .menu-toggle {
+        display: block; /* Mostra o botão hambúrguer */
+    }
+
+    .menu {
+        display: none; /* Esconde o menu por padrão */
+        flex-direction: column;
+        background: #060606;
+        position: fixed;
+        top: 60px; /* Abaixo do header */
+        right: 0;
+        width: 220px;
+        padding: 15px;
+        border-radius: 0 0 0 10px;
+        transition: max-height 0.3s ease-out; /* Transição de altura para o JS */
+        max-height: 0;
+        overflow: hidden;
+    }
+
+    .menu.active {
+        display: flex; /* O JS adiciona esta classe */
+        max-height: 500px; /* Suficiente para mostrar todos os links */
+    }
+
+    /* Hero Section */
+    .hero {
+        flex-direction: column; /* Empilha as seções */
+        text-align: center;
+        min-height: auto; /* Permite que o hero seja mais compacto */
+        padding-top: 80px; /* Adiciona espaço para o menu toggle fixo */
+    }
+
+    /* Centraliza o texto e remove margens fixas */
+    .hero-right, 
+    .hero-right h1,
+    .hero-right .slogan {
+        text-align: center;
+        margin-left: 0; 
+    }
+    
+    .hero-right .logo {
+        font-size: 2.5rem;
+    }
+    
+    .hero-right .slogan {
+        font-size: 1.8rem;
+    }
+
+    /* Grid de Fotos */
+    .photo-grid {
+        width: 100%;
+        max-width: 400px; /* Limita a largura em telas maiores que 600px */
+        margin: 0 auto;
+    }
+
+    .photo-grid img {
+        height: 150px;
+    }
+    
+    /* Features */
+    .features {
+        flex-direction: column; /* Empilha as features */
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .feature {
+        width: 100%;
+        max-width: 300px; /* Limita a largura das features */
+    }
+}
+
+/* Ajustes para Cards e Footer em Mobile Pequeno (aplicado até 600px) */
+@media (max-width: 600px) {
+
+    /* Cards Container: Força coluna única com layout compacto */
+    .cards-container {
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding: 0 10px;
+    }
+    
+    .card {
+        flex-direction: row; /* Imagem e info lado a lado */
+        align-items: flex-start;
+        padding: 10px;
+    }
+    
+    .card .image {
+        width: 80px;
+        height: 80px;
+        flex-shrink: 0;
+        margin-right: 10px;
+    }
+
+    .card .image img {
+        height: 100%;
+        width: 100%;
+    }
+
+    .card .info {
+        flex-grow: 1;
+    }
+    
+    /* Redução de Fontes dos Cards */
+    .card .info h3 {
+        font-size: 0.95rem; 
+    }
+    
+    .card .price {
+        font-size: 0.95rem;
+    }
+    
+    .card .info p, .card .info .extra {
+        font-size: 0.75rem; 
+    }
+    
+    /* Rodapé (Footer) */
+    .footer-container {
+        padding: 2rem 1rem;
+    }
+    
+    .footer-info {
+        flex-direction: column; /* Empilha os itens do footer */
+        gap: 2rem;
+    }
+    
+    .footer-item {
+        min-width: 90%;
+        max-width: none;
+    }
+
+    .footer-bottom {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
 }
